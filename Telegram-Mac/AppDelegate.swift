@@ -1281,6 +1281,9 @@ class AppDelegate: NSResponder, NSApplicationDelegate, NSUserNotificationCenterD
     }
     
     func playSound(_ path: String) {
+        if SystemSoundEffect.play(path: path, volume: 0.7) {
+            return
+        }
         if let context = self.contextValue?.context {
             SoundEffectPlay.play(postbox: context.account.postbox, path: path, volume: 0.7)
         }
